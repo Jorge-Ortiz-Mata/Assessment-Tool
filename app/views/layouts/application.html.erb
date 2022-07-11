@@ -12,8 +12,22 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main class="h-screen">
+
+      <nav class="flex justify-between bg-backcolor text-pbwhite">
+        <%= render 'shared/main_nav_bar' %>
+      </nav>
+
+      <div class="flex h-fit">
+        <nav class="pt-10 pl-5">
+          <%= render 'shared/left_nav_bar' %>
+        </nav>
+        <section class="w-full flex inline-flex flex-col">
+          <%= yield %>
+        </section>
+      </div>
+      <%= render 'shared/footer' %>
     </main>
+    <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>

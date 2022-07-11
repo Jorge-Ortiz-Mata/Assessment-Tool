@@ -1,0 +1,22 @@
+<tr class="bg-white border-b">
+  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    <%= framework.id %>
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    <%= link_to framework_path(framework) do %>
+      <%= framework.name %>
+    <% end %>
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4">
+    <%= framework.description.to_plain_text[0..30]  %>...
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    0
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    <%= time_ago_in_words(framework.created_at) %>
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    See more
+  </td>
+</tr class="bg-white border-b">

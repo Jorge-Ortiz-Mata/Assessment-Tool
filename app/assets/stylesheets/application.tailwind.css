@@ -2,12 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+/* @layer components {
+  .btn {
+    @apply py-2 px-4 bg-gray-700 text-white;
   }
-}
+  .btn.primary {
+    padding: 100px;
+    color: #0000ff;
+  }
+  .button {
+    background-color: theme('colors.backcolor');
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 9px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    margin: 10px 6px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
 
-*/
+  HTML examples.
+
+  <%# <p class="btn">
+    Hello George
+  </p>
+
+  <p class="btnprimary">
+    Hello World
+  </p>
+
+  <p class="button">
+    New Hello World.
+  </p>
+
+  <p class="btn primary">
+    Second Hello World.
+  </p> %>
+
+} */
+@import 'actiontext.css';

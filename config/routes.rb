@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :frameworks
 
   root 'pages#index'
   get 'about', to: "pages#about"

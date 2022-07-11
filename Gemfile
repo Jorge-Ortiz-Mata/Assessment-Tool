@@ -42,21 +42,40 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "tailwindcss-rails", "~> 2.0"
 # Use Sass to process CSS
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'byebug'
+
+  # We'll use RSpec as the testing framework for Rails 5+.
+  gem 'rspec-rails', '~> 5.1'
+
+  gem 'factory_bot_rails', '~> 6.2'
+
+  gem 'shoulda-matchers', '~> 5.1', require: false
+
+  gem 'hirb'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  gem 'rubocop', '~> 1.25', '>= 1.25.1', require: false
+
+  # IDE tools for code completion, inline documentation, and static analysis
+  gem 'solargraph', '~> 0.44.2', require: false
+
+  # Helps us to format ERB files, so our eyes don't bleed :)
+  gem 'htmlbeautifier', '~> 1.4', '>= 1.4.1', require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -70,3 +89,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+

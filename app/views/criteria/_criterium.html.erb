@@ -1,0 +1,17 @@
+<%= turbo_frame_tag dom_id(criterium), class:"my-3" do %>
+  <div class="flex my-10 justify-between bg-white p-10 rounded">
+    <div class="text-left">
+      Criterion: <strong><%= criterium.text %></strong> <br>
+      Answer type: <strong><%= criterium.answer_type.humanize %></strong>
+    </div>
+
+    <div>
+      <%= link_to edit_framework_criterium_path(:id => criterium.id, :framework_id => criterium.framework.id) do %>
+        <i class="fa-solid fa-pen-to-square mt-auto mb-auto mr-5"></i>
+      <% end %>
+      <%= link_to [criterium.framework, criterium], data: { 'turbo_method': :delete, turbo_confirm: 'Are you sure?' } do %>
+        <i class="fa-solid fa-trash-can mt-auto mb-auto"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :frameworks
+  resources :frameworks do
+    resources :criteria
+  end
 
   root 'pages#index'
   get 'about', to: "pages#about"

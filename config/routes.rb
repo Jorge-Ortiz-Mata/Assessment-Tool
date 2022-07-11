@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :templates
   resources :frameworks do
     resources :criteria
   end

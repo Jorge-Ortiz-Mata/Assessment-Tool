@@ -1,8 +1,8 @@
 class AnnouncementMailer < ApplicationMailer
     default from: "jorge.ortiz@icalialabs.com"
 
-    def template
-        @template = params[:template]
+    def template(template)
+        @template = template
         @email_to = "ortiz.mata.jorge@gmail.com"
         if Rails.env.production?
             @url = "https://assessment-tool-point-b-yorch.herokuapp.com/"

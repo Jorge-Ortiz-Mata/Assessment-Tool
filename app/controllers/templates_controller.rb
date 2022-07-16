@@ -20,7 +20,6 @@ class TemplatesController < ApplicationController
 
     respond_to do |format|
       if @template.save
-        AnnouncementMailer.template(@template).deliver_later
         format.html { redirect_to template_url(@template), notice: "Template was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

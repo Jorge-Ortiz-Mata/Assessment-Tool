@@ -23,6 +23,7 @@ class FrameworksController < ApplicationController
 
     respond_to do |format|
       if @framework.save
+        FrameworkMailer.framework_creation(@framework).deliver_later
         format.turbo_stream {
           redirect_to frameworks_path(@framework)
         }
@@ -39,6 +40,7 @@ class FrameworksController < ApplicationController
   def update
     respond_to do |format|
       if @framework.update(framework_params)
+        FrameworkMailer.framework_update(@framework).deliver_later
         format.turbo_stream { render turbo_stream: turbo_stream.replace(
           "framework_show", 
           partial: "frameworks/framework_show", 

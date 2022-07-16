@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <section>
+        <h1>Update Framework</h1>
+        <p>
+            You've update a framework. In order to see these changes, visit
+            our webpage by clicking ont the next link:
+            <strong>
+                <a href="<%= @url %>"><%= @url %></a>
+            </strong> 
+        </p>
+        <p> 
+            <small>
+                Framework details:
+                <ul>
+                    <li>
+                        Frameworks's name:
+                        <strong><%= @framework.name %></strong>
+                    </li> <br>
+                    <li>
+                        Frameworks's description:
+                        <strong><%= @framework.description %></strong>
+                    </li>
+                    <li> <br>
+                        Created at:
+                        <strong><%= time_ago_in_words(@framework.created_at) %></strong>
+                    </li>
+                </ul>
+            </small>
+        </p>
+        <p>
+            Thanks for joining and have a great day!
+        </p>
+    </section>
+  </body>
+</html>

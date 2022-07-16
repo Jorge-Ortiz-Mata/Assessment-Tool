@@ -1,0 +1,19 @@
+<tr class="bg-white border-b">
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    <%= link_to template_path(template) do %>
+      <%= template.name %>
+    <% end %>
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4">
+    <%= template.description[0..30]  %>...
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    0
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    <%= time_ago_in_words(template.created_at) %>
+  </td>
+  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    See more
+  </td>
+</tr class="bg-white border-b">

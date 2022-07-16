@@ -23,6 +23,9 @@
           <%= render 'shared/left_nav_bar' %>
         </nav>
         <section class="w-full flex inline-flex flex-col">
+          <% if notice.present? %>
+            <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+          <% end %>
           <%= yield %>
         </section>
       </div>

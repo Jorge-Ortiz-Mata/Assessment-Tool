@@ -1,14 +1,47 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<%= turbo_stream_from "templates" %>
+<div class="w-full flex inline-flex flex-col text-center mt-16 pb-2">
+  <h1 class="font-bold text-3xl pb-10">Templates.</h1>
+  <p>
+    Templates contains several modules. <br>
+    These modules could be either frameworks or contents.
+    A template could have many contents and many frameworks.  
+  </p>
+</div>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Templates</h1>
-    <%= link_to 'New template', new_template_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+<%= turbo_frame_tag 'template_form' do %>
+  <div class="text-center pt-10">
+    <%= link_to 'Create Template', new_template_path,
+      class: "bg-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
+<% end %>
 
-  <div id="templates" class="min-w-full">
-    <%= render @templates %>
-  </div>
+<div class="flex flex-col" style="visibility: visible;">
+  <table class="text-center m-20 border-2 border-gray-700">
+    <thead class="border-b bg-backcolor">
+      <tr>
+        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+          Name
+        </th>
+        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+          Description
+        </th>
+        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+          Modules
+        </th>
+        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+          Created at
+        </th>
+        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+          Options
+        </th>
+      </tr>
+    </thead class="border-b">
+    <tbody>
+      <%= turbo_frame_tag "templates" do %>
+        <% @templates.each do |template| %>
+          <%= render 'template_row', template: template %>
+        <% end %>
+      <% end  %>
+    </tbody>
+  </table>
 </div>

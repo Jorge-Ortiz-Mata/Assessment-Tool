@@ -1,15 +1,17 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @template %>
-
-    <%= link_to 'Edit this template', edit_template_path(@template), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this template', template_path(@template), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+<div class="relative flex flex-col justify-center px-24 pt-12">
+  <div class="rounded-2xl bg-gray-200 text-center mx-auto p-16">
+    <h2 class="text-4xl font-bold leading-tight text-black">
+      <%= @template.name %>
+    </h2>
+    <p class="my-10 text-small text-black">
+      <%= @template.description %>
+    </p>
+    <div>
+      <%= link_to 'Edit this template', edit_template_path(@template), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Destroy this template', template_path(@template), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
+      <%= link_to 'Back to templates', templates_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>
-    <%= link_to 'Back to templates', templates_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

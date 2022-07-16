@@ -1,27 +1,39 @@
-<%= form_with(model: template, class: "contents") do |form| %>
-  <% if template.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(template.errors.count, "error") %> prohibited this template from being saved:</h2>
+<%= turbo_frame_tag 'templates_form' do %>
+  <section class="absolute top-0 left-0 z-10 bg-slate-900/75 w-full h-full inline-flex">
+    <div class="m-auto inline-flex flex-col bg-white p-10 rounded-md">
+      <h1 class="font-bold text-4xl text-center"><%= title %></h1>
+      <%= form_with(model: template, class: "contents") do |form| %>
+        <% if template.errors.any? %>
+          <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+            <h2><%= pluralize(template.errors.count, "error") %> prohibited this template from being saved:</h2>
 
-      <ul>
-        <% template.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+            <ul>
+              <% template.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="my-5">
+          <%= form.label :name, class: "block mb-2 text-sm font-bold text-gray-700" %>
+          <%= form.text_field :name, 
+            class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline",
+            placeholder: "My template" %>
+        </div>
+
+        <div class="my-5 w-96">
+          <%= form.label :description, class: "block mb-2 text-sm font-bold text-gray-700" %>
+          <%= form.rich_text_area :description, 
+            class:"px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline",
+            placeholder: "Some description about this template..." %>
+        </div>
+
+        <div class="inline-flex mt-5 flex-row-reverse">
+          <%= link_to 'Cancel', :back, class:"bg-red hover:bg-red text-white font-bold py-2 px-4 rounded mt-auto mb-auto" %>
+          <%= form.submit class: "bg-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-auto mb-auto mr-5" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  </section>
 <% end %>

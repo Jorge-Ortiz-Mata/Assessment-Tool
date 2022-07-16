@@ -20,9 +20,13 @@ class TemplatesController < ApplicationController
 
     respond_to do |format|
       if @template.save
-        format.html { redirect_to template_url(@template), notice: "Template was successfully created." }
+        format.turbo_stream { redirect_to templates_path }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(
+          "modal",
+          partial: "templates/form",
+          locals: { template: @template, title: "Create template" }
+        ) }
       end
     end
   end
@@ -30,9 +34,19 @@ class TemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @template.update(template_params)
-        format.html { redirect_to template_url(@template), notice: "Template was successfully updated." }
+        format.turbo_stream do
+          render turbo_stream: 
+            [
+              turbo_stream.remove('modal'),
+              turbo_stream.replace("#{@template.id}", partial: "templates/template", locals: { template: @template}) 
+            ]
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(
+          "modal",
+          partial: "templates/form",
+          locals: { template: @template, title: "Update template" }
+        ) }
       end
     end
   end
@@ -41,7 +55,7 @@ class TemplatesController < ApplicationController
     @template.destroy
 
     respond_to do |format|
-      format.html { redirect_to templates_url, notice: "Template was successfully destroyed." }
+      format.html { redirect_to templates_path }
     end
   end
 

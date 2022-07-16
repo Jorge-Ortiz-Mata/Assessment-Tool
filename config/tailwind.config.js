@@ -14,7 +14,10 @@ module.exports = {
       "leftnav": "#dcdcdc",
       "pointbgray": "#f3f4f6",
       "red": "#ff0000",
-      "green": "#00ff00"
+      "green": "#00ff00",
+      "cyan100": "#cffafe",
+      "cyan600": "#0891b2", 
+      "cyan800": "#155e75" 
     },
     extend: {
       fontFamily: {

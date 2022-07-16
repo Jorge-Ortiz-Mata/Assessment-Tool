@@ -1,17 +1,23 @@
-<div id="<%= dom_id template %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+<%= turbo_frame_tag "modal" %>
+<%# <%= turbo_frame_tag "template_#{template.id}" %>
+<div id="<%= template.id %>" class="flex flex-col mx-36 mt-10 mb-10 p-10 rounded">
+  <h2 class="text-4xl font-bold text-black text-center">
     <%= template.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
+  </h2>
+  <div class="border-t-4 border-cyan600 mt-4"></div>
+  <div class="text-center mt-6">
     <%= template.description %>
+  </div>
+  <div class="mx-auto mt-5 inline-flex">
+    <%= link_to edit_template_path(template), data: { turbo_frame: "modal" } do %>
+      <i class="fa-solid fa-pen-to-square mt-auto mb-auto mr-5"></i>
+    <% end %>
+    <%= button_to template_path(template), method: :delete do %>
+      <i class="fa-solid fa-trash-can mt-auto mb-auto"></i>
+    <% end %>
+  </div>
+  <p class="mt-5 text-center">
+    Frameworks:
+    <strong><%= template.frameworks.count %></strong>
   </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this template", template, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this template', edit_template_path(template), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
 </div>

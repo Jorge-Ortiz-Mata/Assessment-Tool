@@ -1,47 +1,49 @@
-<%= turbo_stream_from "templates" %>
-<div class="w-full flex inline-flex flex-col text-center mt-16 pb-2">
-  <h1 class="font-bold text-3xl pb-10">Templates.</h1>
-  <p>
-    Templates contains several modules. <br>
-    These modules could be either frameworks or contents.
-    A template could have many contents and many frameworks.  
-  </p>
-</div>
-
-<%= turbo_frame_tag 'templates_form' do %>
-  <div class="text-center pt-10">
-    <%= link_to 'Create Template', new_template_path,
-      class: "bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<%= turbo_frame_tag "modal" %>
+<%= turbo_stream_from "templates_channel" %>
+<section>
+  <div class="w-full flex inline-flex flex-col text-center mt-16 pb-2">
+    <h1 class="font-bold text-3xl pb-10">Templates.</h1>
+    <p>
+      Templates contains several modules. <br>
+      These modules could be either frameworks or contents.
+      A template could have many contents and many frameworks.  
+    </p>
   </div>
-<% end %>
 
-<div class="flex flex-col" style="visibility: visible;">
-  <table class="text-center m-20 border-2 border-gray-700">
-    <thead class="border-b bg-backcolor">
-      <tr>
-        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-          Name
-        </th>
-        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-          Description
-        </th>
-        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-          Modules
-        </th>
-        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-          Created at
-        </th>
-        <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-          Options
-        </th>
-      </tr>
-    </thead class="border-b">
-    <tbody>
-      <%= turbo_frame_tag "templates" do %>
+  <div class="text-center pt-10">
+    <%= link_to new_template_path,
+              data: { turbo_frame: "modal" },
+              class: "rounded-lg py-3 px-5 bg-cyan600 hover:bg-cyan800 text-white font-medium" do %>
+        Create template
+    <% end %>
+  </div>
+
+  <div class="flex flex-col" style="visibility: visible;">
+    <table class="text-center m-20 border-2 border-gray-700">
+      <thead class="border-b bg-backcolor">
+        <tr>
+          <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+            Name
+          </th>
+          <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+            Description
+          </th>
+          <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+            Modules
+          </th>
+          <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+            Created at
+          </th>
+          <th scope="col" class="text-sm font-medium text-white px-6 py-4">
+            Options
+          </th>
+        </tr>
+      </thead class="border-b">
+      <tbody id="templates_table">
         <% @templates.each do |template| %>
           <%= render 'template_row', template: template %>
         <% end %>
-      <% end  %>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
+</section>

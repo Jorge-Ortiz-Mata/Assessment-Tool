@@ -1,6 +1,6 @@
-<section class="bg-white mt-6">
-  <div class="grid max-w-screen-xl px-4 py-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-    <div class="mr-auto place-self-center lg:col-span-7">
+<section class="bg-white my-10 inline-flex">
+  <div class="inline-flex mx-auto">
+    <div class="inline-flex flex-col mt-10">
       <h1 class="max-w-2xl mb-6 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-black">The Assessment Tool Platform</h1>
       <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
         The <strong>Assessment Tool Project</strong> allows users to create assessments and send them to others users
@@ -8,19 +8,22 @@
         Users registered within this platform, will have specific roles with certain permissions. <br>
         Come'on, and don't waste spreedsheets and money and start building your own surveys and send them to everyone.
       </p>
-      <div class="my-8">
-        <%= link_to frameworks_path, class: "rounded bg-gray-200 p-4 hover:bg-gray-800 hover:text-white" do %>
-          <i class="fa-solid fa-square-poll-horizontal text-pbgray mr-1"></i> Frameworks
+      <div class="flex justify-center">
+        <%= link_to frameworks_path, class: "rounded bg-green-500 p-3 m-2 hover:bg-green-800 text-white" do %>
+          <i class="fa-solid fa-square-poll-horizontal text-pbgray mr-1"></i> Create a framework
+        <% end %>
+        <%= link_to templates_path, class: "rounded bg-blue-500 p-3 m-2 hover:bg-blue-800 text-white" do %>
+          <i class="fa-solid fa-square-poll-horizontal text-pbgray mr-1"></i> Create a template
         <% end %>
       </div>
     </div>
-    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-        <%= image_tag("4806453.jpg")%>
-    </div>                
+    <div class="my-class my-10 ml-10">
+      <%= image_tag("4806453.jpg")%>
+    </div>
   </div>
 </section>
 
-<section class="bg-white">
+<section class="bg-white mt-10">
   <div class="mx-auto max-w-screen-xl flex flex-col">
     <h2 class="mb-6 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-black md:text-4xl">
       ¡Create your first Assessment!
